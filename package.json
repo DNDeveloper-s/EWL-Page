@@ -1,0 +1,19 @@
+{
+  "name": "ewl-page",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DNDeveloper-s/EWL-Page.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DNDeveloper-s/EWL-Page/issues"
+  },
+  "homepage": "https://github.com/DNDeveloper-s/EWL-Page#readme"
+}

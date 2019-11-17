@@ -1,0 +1,397 @@
+/*
+0 - 600px:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px + :      Big desktop
+
+$breakpoint arguement choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+ORDER: Base + typography > general layout + grid > page layout > components
+
+1em = 16px
+*/
+/*
+0 - 600px:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px + :      Big desktop
+
+$breakpoint arguement choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+ORDER: Base + typography > general layout + grid > page layout > components
+
+1em = 16px
+*/
+* {
+  margin: 0;
+  padding: 0;
+  background: none;
+  font-family: Myriad Pro Regular;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 100px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+::-webkit-input-placeholder {
+  /* Edge */
+  color: rgba(0, 0, 0, 0.3);
+  font-size: 22px;
+  font-family: "Myriad Pro";
+  font-weight: 600;
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: rgba(0, 0, 0, 0.3);
+}
+
+::placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+/* Cursor Section */
+.cursor {
+  pointer-events: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 99999999;
+  top: 0;
+  left: 0;
+  opacity: 1;
+}
+
+@keyframes cursorAnim3 {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(3);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+.expand {
+  animation: cursorAnim3 0.5s forwards;
+  border: 1px solid #ff5e4c;
+}
+
+body {
+  overflow-x: hidden;
+  user-select: none;
+  background: black;
+  height: 2000px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.g {
+  background: green;
+}
+
+.b {
+  background: blue;
+}
+
+.r {
+  background: red;
+}
+
+.y {
+  background: yellow;
+}
+
+.w {
+  background: white;
+}
+
+.p {
+  cursor: pointer;
+}
+
+.mt-5 {
+  margin-top: 5px;
+}
+
+.navigation {
+  position: fixed;
+  height: 205px;
+  margin-top: 30px;
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  align-items: flex-end;
+  transition: 0.4s;
+}
+.navigation.collapse {
+  height: 74px;
+}
+.navigation.collapse > .ewl__logo {
+  left: 30px;
+  transform: translateX(0%);
+}
+.navigation.collapse > .ewl__logo > img {
+  transition: 0.4s;
+  height: 74px;
+}
+.navigation.collapse > .nav__items > ul > .ims__logo {
+  transform: translateX(-200px);
+  opacity: 0;
+}
+.navigation > .ewl__logo {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: 0.4s;
+}
+.navigation > .ewl__logo > img {
+  height: 95px;
+  transition: 0.4s;
+}
+.navigation > .nav__items {
+  height: 74px;
+  width: 100%;
+}
+.navigation > .nav__items > ul {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-bottom: 0.5px solid rgba(139, 139, 139, 0.84);
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+}
+.navigation > .nav__items > ul > li {
+  padding: 0 30px;
+  position: relative;
+}
+.navigation > .nav__items > ul > li.ims__logo {
+  transform: translateX(0);
+  transition: 0.4s;
+}
+.navigation > .nav__items > ul > li.ims__logo > img {
+  height: 74px;
+}
+.navigation > .nav__items > ul > li.active > a {
+  color: #412BFE;
+  font-weight: 700;
+}
+.navigation > .nav__items > ul > li.moving__line {
+  position: absolute;
+  line-height: 74px;
+  top: 100%;
+  height: 4px;
+  left: 0;
+  background: #412BFE;
+  transition: 0.3s cubic-bezier(0.23, 0.36, 0.08, 1.33);
+}
+.navigation > .nav__items > ul > li > a {
+  font-family: "Open Sans", sans-serif;
+  font-size: 24px;
+  line-height: 74px;
+  font-weight: normal;
+  color: #fff;
+  transition: 0.4s;
+  display: block;
+  text-align: center;
+}
+.navigation > .nav__items > ul > li > a:hover {
+  color: #412BFE;
+}
+
+/*
+0 - 600px:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px + :      Big desktop
+
+$breakpoint arguement choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+ORDER: Base + typography > general layout + grid > page layout > components
+
+1em = 16px
+*/
+* {
+  margin: 0;
+  padding: 0;
+  background: none;
+  font-family: Myriad Pro Regular;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 100px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+::-webkit-input-placeholder {
+  /* Edge */
+  color: rgba(0, 0, 0, 0.3);
+  font-size: 22px;
+  font-family: "Myriad Pro";
+  font-weight: 600;
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: rgba(0, 0, 0, 0.3);
+}
+
+::placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+/* Cursor Section */
+.cursor {
+  pointer-events: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 99999999;
+  top: 0;
+  left: 0;
+  opacity: 1;
+}
+
+@keyframes cursorAnim3 {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(3);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+.expand {
+  animation: cursorAnim3 0.5s forwards;
+  border: 1px solid #ff5e4c;
+}
+
+body {
+  overflow-x: hidden;
+  user-select: none;
+  background: black;
+  height: 2000px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.g {
+  background: green;
+}
+
+.b {
+  background: blue;
+}
+
+.r {
+  background: red;
+}
+
+.y {
+  background: yellow;
+}
+
+.w {
+  background: white;
+}
+
+.p {
+  cursor: pointer;
+}
+
+.mt-5 {
+  margin-top: 5px;
+}
+
+@keyframes dotAnim {
+  0% {
+    transform: rotate(0deg) scale(0.8);
+  }
+  50% {
+    transform: rotate(180deg) scale(1);
+  }
+  100% {
+    transform: rotate(360deg) scale(0.8);
+  }
+}
+
+/*# sourceMappingURL=main.css.map */
