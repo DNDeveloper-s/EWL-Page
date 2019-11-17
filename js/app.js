@@ -30,6 +30,10 @@ listItems.forEach(cur => {
     });
 });
 
+window.addEventListener('resize', () => {
+   updateMovingLine();
+});
+
 window.addEventListener('scroll', () => {
     if(window.pageYOffset >= 148) {
         navigation.classList.add('collapse');
