@@ -1,0 +1,145 @@
+.chooseSection {
+  width: 100vw;
+  background: $choose-bg-color;
+  background-image: url("../img/choose_class/bg.png");
+  background-size: 60%;
+  background-position-y: center;
+  background-position-x: 10vw;
+  background-repeat: no-repeat;
+  padding: 150px 0;
+
+  @media screen and (max-width: $break-process-mobile1) {
+    padding: 100px 0;
+    background-size: 100%;
+    background-position-x: 3vw;
+  }
+
+  @media screen and (max-width: $break-process-mobile2) {
+    padding: 80px 0;
+  }
+
+  > .box {
+    padding: 120px 0;
+    position: relative;
+    width: 80vw;
+    max-width: 1066px;
+    margin: 0 auto;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.4);
+    border-radius: 28px;
+    background: linear-gradient(to left bottom, rgba(255, 255, 255, 0.69), rgba(255, 255, 255, 0.49));
+
+    @media screen and (max-width: $break-hero) {
+      padding: 80px 0;
+    }
+
+    @media screen and (max-width: $break-process-mobile2) {
+      padding: 60px 0;
+      width: 90vw;
+    }
+
+
+    > h2 {
+      text-align: center;
+      font-family: "Myriad Pro Regular";
+      font-size: 34px;
+      color: rgba(0, 0, 0, 0.8);
+
+      @media screen and (max-width: $break-process-mobile2) {
+        font-size: 28px;
+      }
+
+      @media screen and (max-width: $break-choose) {
+        font-size: 24px;
+      }
+    }
+
+    > .container {
+      width: 55%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 120px auto;
+
+      @media screen and (max-width: $break-medium-fix2) {
+        zoom: 0.8;
+      }
+
+      @media screen and (max-width: $break-hero) {
+        zoom: 0.6;
+      }
+
+      @media screen and (max-width: $break-process-mobile1) {
+        margin: 80px auto;
+        width: 80%;
+      }
+
+      @media screen and (max-width: $break-process-mobile2) {
+        zoom: 0.5;
+      }
+
+      @media screen and (max-width: $break-choose) {
+        zoom: 0.4;
+      }
+
+      > .class {
+        width: 43%;
+        height: 120px;
+        min-width: 80px;
+        max-width: 160px;
+        border-radius: 18px;
+        background: $choose-secondary-color;
+        transition: 300ms;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        @include flexCenter();
+
+        > h3 {
+          font-size: 36px;
+          transition: 300ms;
+          color: rgba(0, 0, 0, 0.8);
+        }
+
+        &:hover {
+          background: $choose-primary-color;
+
+          > h3 {
+            color: #fff;
+          }
+        }
+      }
+    }
+
+    > a {
+      text-align: center;
+      display: block;
+      width: 60%;
+      margin: 0 auto;
+      background: $choose-primary-color;
+      border-radius: 280px;
+      color: #fff;
+      padding: 10px;
+      font-size: 24px;
+      font-family: "Myriad Pro Regular";
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      letter-spacing: 4px;
+      transition: 300ms;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+      }
+      &:active {
+        transform: translateY(-1px);
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      @media screen and (max-width: $break-process-mobile1) {
+        width: 85%;
+        font-size: 14px;
+      }
+
+      @media screen and (max-width: $break-choose) {
+        font-size: 11px;
+      }
+    }
+  }
+}

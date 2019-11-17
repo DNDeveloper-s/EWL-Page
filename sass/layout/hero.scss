@@ -1,0 +1,1163 @@
+@import "../base/utilities";
+
+
+$nav-height: 110px;
+$nav-li-font: sans-serif;
+$nav-btn-font-size: 12px;
+
+$mobNav: 80px;
+$liHeight: 100px;
+
+header {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  z-index: 11;
+
+  > .navBg {
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: $nav-height;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+
+    @media screen and (max-width: $break-nav) {
+      display: none;
+    }
+
+    @media screen and (max-width: $break-medium-fix1) {
+      height: 90px;
+    }
+
+    &.about {
+      background: $hero-primary-color;
+    }
+  }
+
+  > .mobile {
+    position: relative;
+    height: $mobNav;
+    background: #fff;
+    display: none;
+    z-index: 9999999999999;
+
+    @media screen and (max-width: $break-nav) {
+      display: block;
+    }
+
+    > .menu {
+      position: absolute;
+      top: 0;
+      left: 4vw;
+      height: 100%;
+
+      > i {
+        line-height: $mobNav;
+        font-size: 33px;
+      }
+    }
+
+    > .rightNav {
+      position: absolute;
+      right: 5vw;
+      height: 100%;
+      top: 0;
+
+      > .right {
+        line-height: $mobNav;
+        font-size: 16px;
+        font-family: 'Myriad Pro Regular';
+        font-weight: 900;
+        padding: 9px 30px;
+        background: #b9e7e8;
+        border-radius: 150px;
+        color: rgba(78, 78, 78, 0.96);
+
+        &:hover {
+          background: white;
+          border: 1px solid #32ffec;
+        }
+      }
+    }
+
+    > .mobNav {
+      width: 100vw;
+      overflow-y: scroll;
+      position: absolute;
+      top: 100%;
+      transform: scale(1, 0);
+      opacity: 0;
+      background: #fff;
+      font-family: "Myriad Pro";
+      transition: all 300ms, height 300ms, opacity 100ms;
+      transform-origin: top;
+
+      &.open {
+        transform: scale(1, 1);
+        opacity: 1;
+      }
+
+      > ul {
+        margin: 0;
+        font-size: 35px;
+
+        > li {
+          position: relative;
+          color: #fff;
+          height: $liHeight;
+          line-height: $liHeight;
+          font-size: 15px;
+          transition: all 300ms;
+          border: 1px solid rgba(0, 0, 0, 0.1);
+
+          > a {
+            color: #808080;
+            font-size: 25px;
+            display: block;
+            padding: 0 10vw;
+            background: transparent;
+            font-weight: 800;
+          }
+
+          > span {
+            position: absolute;
+            top: 0;
+            line-height: $liHeight;
+            right: 10vw;
+
+            &.rot {
+
+              > i {
+                transform: rotateZ(180deg);
+              }
+            }
+
+            &.rotBack {
+
+              > i {
+                transform: rotateZ(0deg);
+              }
+            }
+            > i {
+              transition: 300ms;
+              color: #808080;
+              font-size: 25px;
+            }
+          }
+
+          > ul {
+            position: relative;
+            width: auto;
+            height: auto;
+            top: 0;
+            transform: scale(1, 1);
+            transform-origin: top;
+            transition: 300ms;
+            background: rgba(249, 249, 249, 0.98);
+
+            &.none {
+              > li {
+                transform: scale(1);
+                opacity: 1;
+                height: $liHeight;
+              }
+            }
+
+            > li {
+              //box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+              height: 0;
+              padding: 0 $liHeight;
+              opacity: 0;
+              transform: scale(0);
+              color: #fff;
+              font-size: 25px;
+              transition: height 300ms, opacity 100ms, color 300ms;
+
+              > a {
+                color: #808080;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  > .nav {
+    width: 100%;
+    position: relative;
+    max-width: 1440px;
+    margin: 0 auto;
+    top: 0;
+    left: 0;
+    z-index: 9999999999999999999;
+    height: $nav-height;
+    @include flexCenter();
+    justify-content: flex-start;
+    @media screen and (max-width: $break-nav) {
+      display: none;
+    }
+
+    @media screen and (max-width: $break-medium-fix1) {
+      zoom: 0.8;
+    }
+
+    > .logo {
+      margin-left: 100px;
+      position: relative;
+      width: 130px;
+      height: 160px;
+      z-index: 1;
+
+      > .rounded {
+        width: 130px;
+        height: 170%;
+        position: absolute;
+        top: -60px;
+      }
+
+      >.mainLogo {
+        position: absolute;
+        z-index: 1;
+
+        > img {
+          width: 71px;
+        }
+
+        @include absCenter();
+        top: 60%;
+      }
+    }
+
+    > nav {
+      margin-top: 20px;
+      margin-left: 20px;
+      width: 40%;
+
+      > ul {
+        margin: 0;
+        display: flex;
+
+        > li {
+          position: relative;
+          @include flexCenter();
+          padding: 30px 10px;
+          margin: 10px;
+          perspective: 1000px;
+
+          > a {
+            color: black;
+            text-transform: uppercase;
+            white-space: nowrap;
+            font-size: 15px;
+            font-family: "Myriad Pro Bold";
+          }
+
+          > .dropdown {
+            position: absolute;
+            top: calc(100%);
+            left: 0;
+            width: 250px;
+            background: rgba(255, 255, 255, 0.83);
+            border-radius: 5px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 100ms ease-in-out 100ms, transform 280ms;
+            transform-origin: top;
+            transform: translateY(10px) rotateX(-90deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            > .caret {
+              position: absolute;
+              width: 14px;
+              height: 14px;
+              top: -7px;
+              left: 20px;
+              background: $hero-primary-color;
+              transform: rotateZ(45deg);
+              z-index: -1;
+            }
+
+            > .leftContent,
+            > .rightContent{
+              width: 100%;
+              //border: 1px solid black;
+              height: 100%;
+
+              > ul {
+
+                .dropDown-item{
+                  margin: 5px 3px;
+
+                  > a {
+                    display: block;
+                    padding: 0 35px;
+                    height: 40px;
+                    line-height: 40px;
+                    color: black;
+                    background: $button-primary-color;
+                    transition: 300ms;
+                    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+                    border-radius: 8px;
+
+                    &:hover {
+                      background: $button-primary-hover-color;
+                    }
+                  }
+                }
+
+                li.headLi {
+                  height: 40px;
+                  line-height: 40px;
+                  font-size: 16px;
+                  padding: 0 35px;
+                  background: $hero-primary-color;
+                  font-family: "Myriad Pro Bold";
+                  border-radius: 0px;
+                  border-top-left-radius: 5px;
+                }
+
+                .dropIt,
+                .dropItHead{
+
+                  > ul {
+                    height: 0;
+                    overflow: hidden;
+                    transition: 300ms;
+                  }
+                }
+              }
+
+            }
+
+            > .rightContent {
+              width: 70%;
+              //border: 1px solid black;
+              height: 100%;
+              box-shadow: -2px 0px 2px rgba(0, 0, 0, 0.3);
+
+              > ul {
+
+                > li {
+                  background: #fff;
+                }
+
+                > li.headLi {
+                  border-top-left-radius: 0;
+                  border-top-right-radius: 5px;
+                }
+              }
+            }
+
+          }
+
+          &:hover {
+
+
+            > .dropdown {
+              opacity: 1;
+              transform: translateY(0px) rotateX(0deg);
+              visibility: visible;
+            }
+          }
+        }
+      }
+    }
+
+    .btns {
+      position: absolute;
+      right: 150px;
+      margin-top: 10px;
+      @include flexCenter();
+
+
+      >.free_btn {
+        position: relative;
+        padding: 8px 15px;
+        border-radius: 5px;
+        transition: 400ms;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        font-size: 14px;
+        font-family: "Myriad Pro Bold";
+        color: #000;
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        &:active {
+          transform: translateY(-1px);
+          box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+        }
+      }
+
+      > .logBtns {
+        position: relative;
+        margin-left: 30px;
+
+        > a {
+          //max-width:100px;
+          color: black;
+          padding: 8px 35px;
+          border-radius: 100px;
+          background: transparent;
+          outline: none;
+          font-size: 15px;
+          font-family: "Myriad Pro Bold";
+          border: 2px solid $button-primary-color;
+          transition: 500ms;
+
+          &.active {
+            background: $button-primary-color;
+          }
+        }
+
+        > .login {
+          //padding-right: 40px;
+
+          &:hover {
+            background: $button-primary-color;
+          }
+          &:hover + .signup {
+            background: transparent;
+          }
+        }
+
+        > .signup {
+          position: absolute;
+          white-space: nowrap;
+          top: -10px;
+          left: 75%;
+        }
+      }
+    }
+  }
+}
+
+.hero_Section {
+  width: 100vw;
+  background: $hero-primary-color;
+
+  background-image: url('../img/hero_section/hero_back_bg.png');
+  background-size: 100% 100%;
+
+  &.home {
+    height: 100vh;
+
+    @media screen and (max-width: $break-hero-flex) {
+      height: auto;
+    }
+  }
+
+  &.about {
+    background: #fff;
+    height: auto;
+    padding-top: 100px;
+  }
+
+  @media screen and (max-width: $break-hero-flex) {
+    height: auto;
+  }
+
+    .backBg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    opacity: 0.7;
+    min-height: 100vh;
+    max-height: 100vh;
+
+    &.desk {
+
+      @media screen and (max-width: $break-hero-flex) {
+        display: none;
+      }
+    }
+
+    &.mob {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      display: none;
+      max-height: none;
+
+      @media screen and (max-width: $break-hero-flex) {
+        height: 100%;
+        min-height: 100vh;
+        display: block;
+      }
+    }
+
+  }
+}
+
+ul {
+  list-style: none;
+}
+
+:focus {
+  outline: none;
+}
+
+$nav-height: 110px;
+$nav-li-font: sans-serif;
+$nav-btn-font-size: 12px;
+
+//.mainBg {
+//  position: absolute;
+//  width: 100vw;
+//  height: 100vh;
+//  background-image: url('../img/hero_section/hero_bg.png');
+//  background-size: cover;
+//}
+
+.wrapper {
+  position: relative;
+  max-width: 1440px;
+  height: 100vh;
+  display: block;
+  margin: 0 auto;
+  //box-shadow : 0px 0px 30px rgba(0, 0, 0, 0.5);
+
+  &.home {
+    display: flex;
+    align-items: center;
+  }
+
+  &.about {
+    height: auto;
+    margin-top: 10px;
+
+    @media screen and (max-width: $break-medium-fix1) {
+      margin-top: -10px;
+    }
+  }
+
+  &.classes {
+    max-width: 33340px;
+  }
+
+  @media screen and (max-width: $break-hero-flex) {
+    height: auto;
+  }
+
+  $mobNav: 80px;
+  $liHeight: 100px;
+
+  > .content {
+    height: calc(100vh - 110px);
+    @include flexCenter();
+    justify-content: space-between;
+    overflow: hidden;
+    position: relative;
+
+    @media screen and (max-width: $break-hero-flex) {
+      flex-direction: column;
+      height: auto;
+      padding-bottom: 80px;
+    }
+
+    > .left {
+      width: 42%;
+      padding-left: 100px;
+
+      @media screen and (max-width: $break-hero-flex) {
+        width: 100vw;
+        padding-left: 0;
+        text-align: center;
+        padding-top: 80px;
+        margin-bottom: 40px;
+      }
+
+      @media screen and (max-width: $break-medium-fix1) {
+        zoom: 0.8;
+      }
+
+      //@media screen and (max-width: $break-hero) {
+      //  //flex-direction: column;
+      //  zoom: 0.6;
+      //}
+
+      > h2 {
+        font-size: 54px;
+        margin-bottom: 30px;
+      }
+
+      > p {
+        font-size: 24px;
+        line-height: 30px;
+        margin-bottom: 70px;
+
+        @media screen and (max-width: $break-hero-flex) {
+          margin-bottom: 0px;
+        }
+      }
+    }
+
+    > .right {
+      width: 45%;
+
+      @media screen and (max-width: $break-hero) {
+        //flex-direction: column;
+        zoom: 0.6;
+      }
+      @media screen and (max-width: $break-hero-flex) {
+        @include flexCenter();
+        width: 90%;
+        margin-bottom: 40px;
+      }
+
+      > img {
+        width: 86%;
+        max-width: 600px;
+
+        @media screen and (max-width: $break-hero-flex) {
+          min-width: 90vw;
+        }
+      }
+    }
+  }
+
+  > .aboutContent {
+    padding: 0 50px;
+
+    @media screen and (max-width: $break-hero-flex) {
+      padding: 0;
+    }
+
+    > img {
+      max-width: 1166px;
+      width: 90vw;
+      display: block;
+      margin: 0 auto;
+      padding: 30px 0;
+
+      @media screen and (max-width: $break-hero-flex) {
+        width: 100vw;
+      }
+    }
+
+    > .content {
+      max-width: 1066px;
+      padding: 30px 0 60px;
+      margin: 0 auto;
+
+      @media screen and (max-width: $break-medium-fix1) {
+        padding-left: 40px;
+        width: 80vw;
+      }
+
+      @media screen and (max-width: $break-hero-flex) {
+        padding-left: 10px;
+        padding-right: 20px;
+        width: 90vw;
+      }
+
+      @media screen and (max-width: $break-process-mobile1) {
+        padding-left: 0px;
+        padding-right: 0px;
+      }
+
+      > h2 {
+        color: $carousel-primary-color;
+        font-size: 34px;
+      }
+
+      > p {
+        margin-top: 20px;
+        font-size: 18px;
+        line-height: 27px;
+        text-align: justify;
+
+        @media screen and (max-width: $break-process-mobile1) {
+          font-size: 15px;
+          line-height: 21px;
+        }
+      }
+    }
+  }
+
+  > .classesContent {
+    padding: 0 50px 0 90px;
+
+    &.classes {
+      padding: 0;
+    }
+
+    @media screen and (max-width: $break-hero-flex) {
+      padding: 0 50px 0 50px;
+    }
+
+    @media screen and (max-width: $break-syllabus-more) {
+      padding: 0;
+    }
+
+    > .heroBg {
+      background: #91c3e2;
+      height: 50vh;
+      @include flexCenter();
+
+      > h2 {
+        color: #fff;
+        font-size: 35px;
+        letter-spacing: 2px;
+      }
+
+      @media screen and (max-width: $break-hero-flex) {
+        zoom: 0.7;
+      }
+
+      @media screen and (max-width: $break-choose) {
+        zoom: 0.5;
+      }
+    }
+
+    > .topContent {
+      margin: -100px auto 100px;
+      max-width: 1010px;
+      background-image: url("../img/pricing_section/gradient_course_details.png");
+      background-size: cover;
+      //background: #44b9c2;
+      height: 350px;
+      position: relative;
+      @include flexCenter();
+      justify-content: space-evenly;
+      padding: 0;
+      border-radius: 6px;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+
+      @media screen and (max-width: $break-medium-fix2) {
+        zoom: 0.8;
+      }
+
+      @media screen and (max-width: $break-hero) {
+        zoom: 0.7;
+      }
+
+      @media screen and (max-width: $break-hero-flex) {
+        flex-direction: column;
+        max-width: 450px;
+        height: auto;
+      }
+
+      @media screen and (max-width: $break-syllabus) {
+        zoom: 0.6;
+      }
+
+      @media screen and (max-width: $break-syllabus-more) {
+        width: 380px;
+      }
+
+      .creative {
+        min-width: 400px;
+        max-width: 450px;
+        height: 120%;
+        border-radius: 85px;
+        position: relative;
+
+        @media screen and (max-width: $break-hero-flex) {
+          max-width: 1750px;
+          width: 150%;
+          margin-top: 40px;
+        }
+
+        @media screen and (max-width: $break-syllabus-more) {
+          width: 120%;
+        }
+
+        > .headings {
+          position: absolute;
+          width: 100%;
+          top: 25%;
+          transform: translateY(-25%);
+
+          > h3 {
+            text-align: center;
+            font-size: 25px;
+            color: $carousel-primary-color;
+            font-family: "Myriad Pro Bold";
+          }
+        }
+
+        > img {
+          width: 100%;
+        }
+      }
+
+      .selections {
+        position: relative;
+        zoom: 1.2;
+        text-align: center;
+
+        @media screen and (max-width: $break-hero-flex) {
+          flex-direction: column;
+          max-width: 350px;
+          height: auto;
+          margin: 40px 20px;
+        }
+
+        > h3 {
+          color: #fff;
+          font-family: "Myriad Pro Regular";
+          font-weight: 300;
+        }
+
+        > .classBoard {
+          margin: 50px 0 80px;
+          display: flex;
+          color: #fff;
+
+          &.classes {
+            margin: 34px 0;
+          }
+
+          @media screen and (max-width: $break-syllabus-more) {
+            margin: 20px 0 40px;
+            flex-direction: column;
+          }
+
+          > .labels {
+            display: flex;
+            font-size: 24px;
+            margin-right: 20px;
+
+            @media screen and (max-width: $break-syllabus-more) {
+              margin-right: 0;
+              margin-top: 20px;
+            }
+
+            > label {
+              margin-right: 7px;
+              margin-top: 2px;
+            }
+          }
+        }
+
+        > input[type="text"] {
+          margin: 30px 0;
+          max-width: 480px;
+          min-width: 300px;
+          outline: none;
+          border: none;
+          padding: 5px 10px;
+          background: #fff;
+          border-radius: 4px;
+          font-size: 18px;
+        }
+        > input[type="text"]::placeholder {
+          color: rgba(143, 143, 143, 0.8);
+          font-size: 15px;
+          letter-spacing: 2px;
+        }
+
+        > input[type="submit"] {
+          border: none;
+          outline: none;
+          padding: 5px 20px;
+          border-radius: 4px;
+          font-size: 17px;
+          letter-spacing: 1px;
+          cursor: pointer;
+          background: $choose-secondary-color;
+          box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+          transition: 300ms;
+          font-family: "Myriad Pro Bold";
+
+          &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+          }
+
+          &:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+          }
+        }
+
+        select{
+          border: none;
+          outline: none;
+          border-bottom: 2px solid #fff;
+          color: #fff;
+          font-size: 21px;
+          text-align: center;
+
+          option {
+            background: #e7e7e7;
+            border-bottom: 1px solid;
+            color: rgba(0, 0, 0, 0.84);
+          }
+        }
+      }
+    }
+
+    > .bottomContent {
+      max-width: 800px;
+      //border: 1px solid;
+      margin: 0 auto;
+      padding-bottom: 80px;
+
+      @media screen and (max-width: $break-syllabus) {
+        zoom: 0.7;
+        padding: 45px 25px;
+      }
+
+      > h2 {
+        letter-spacing:2px;
+        text-align: center;
+        margin-bottom: 70px;
+        font-size: 28px;
+        color: rgba(0,0,0,0.78);
+      }
+
+      > .syllabusList {
+        max-width: 500px;
+        margin: 0 auto;
+        background: rgba(211, 211, 211, 0.75);
+
+        > li {
+          letter-spacing: 2px;
+
+          > a {
+            font-size: 20px;
+            font-weight: 800;
+            font-family: "Myriad Pro Bold";
+            color: rgba(0,0,0,0.88);
+            display: block;
+            text-transform: uppercase;
+            padding: 14px 80px;
+            border-bottom: 1px solid rgba(0,0,0,0.3);
+            border-left: 0 solid #22a2a4;
+            transition: .3s;
+
+            &:hover {
+              border-left: 7px solid #22a2a4;
+              color: #22a2a4;
+            }
+          }
+        }
+      }
+
+      &.classes {
+        max-width: 34440px;
+        width: 100vw;
+        @include flexCenter();
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 30px 0;
+        background: #7fcfd8;
+        display: none;
+
+        &.active {
+          display: flex;
+        }
+
+        @media screen and (max-width: $break-syllabus) {
+          zoom: 1;
+          padding: 30px 0;
+        }
+
+        > h3 {
+          font-size: 24px;
+          background: #007582;
+          font-family: "Myriad Pro Bold";
+          padding: 14px 58px;
+          border-radius: 4px;
+          color: #fff;
+
+          @media screen and (max-width: $break-grid-container) {
+            font-size: 20px;
+            padding: 14px 28px;
+          }
+
+          @media screen and (max-width: $break-choose) {
+            zoom: 0.8;
+          }
+        }
+
+        > h2 {
+          margin: 20px 0;
+          font-size: 25px;
+          letter-spacing: 5px;
+          color: #fff;
+
+          @media screen and (max-width: $break-choose) {
+            zoom: 0.8;
+          }
+        }
+
+        > .container {
+          max-width: 800px;
+          width: 90vw;
+          background: #fff;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-gap: 30px;
+          padding: 50px 40px;
+          border-radius: 8px;
+          justify-items: center;
+
+          @media screen and (max-width: $break-grid-container) {
+            grid-template-columns: 1fr;
+            max-width: 320px;
+          }
+
+          > .card {
+            height: 150px;
+            width: 250px;
+            border-radius: 15px;
+            @include flexCenter();
+            font-size: 29px;
+            color: #Fff;
+            font-family: "Myriad Pro Bold";
+            padding-left: 40px;
+
+            @media screen and (max-width: $break-process-mobile1) {
+              zoom: 0.8;
+            }
+          }
+
+          > .card1 {
+            background: url('../img/classes_page/yellow.png');
+            background-size: 100% 100%;
+          }
+
+          > .card2 {
+            background: url('../img/classes_page/green.png');
+            background-size: 100% 100%;
+          }
+
+          > .card3 {
+            background: url('../img/classes_page/red.png');
+            background-size: 100% 100%;
+          }
+
+          > .card4 {
+            background: url('../img/classes_page/purple.png');
+            background-size: 100% 100%;
+          }
+        }
+
+        > a {
+          margin-top: 30px;
+          color: #fff;
+          background: #007582;
+          font-size: 25px;
+          max-width: 250px;
+          padding: 14px 30px;
+          text-align: center;
+          border-radius: 6px;
+          font-family: "Myriad Pro Bold";
+
+          @media screen and (max-width: $break-choose) {
+            zoom: 0.8;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+input:focus {
+  outline: none;
+}
+
+.inputNumber {
+  width: 450px;
+  position: relative;
+
+  &.desk {
+
+    @media screen and (max-width: $break-hero-flex) {
+      display: none;
+    }
+  }
+
+  &.mob {
+    display: none;
+
+    @media screen and (max-width: $break-hero-flex) {
+      display: block;
+    }
+
+    @media screen and (max-width: $break-btn-zoom) {
+      zoom: 0.6;
+    }
+  }
+
+
+  @media screen and (max-width: $break-medium-fix1) {
+    zoom: 0.8;
+  }
+}
+
+.intl-tel-input.allow-dropdown input, .intl-tel-input.allow-dropdown input[type=tel], .intl-tel-input.allow-dropdown input[type=text], .intl-tel-input.separate-dial-code input, .intl-tel-input.separate-dial-code input[type=tel], .intl-tel-input.separate-dial-code input[type=text] {
+  padding-left: 110px;
+  width: 450px;
+  font-size: 24px;
+  letter-spacing: 2px;
+  padding-top: 10px;
+  border-radius: 8px;
+  padding-bottom: 10px;
+  background: white;
+  border: 1px solid $button-primary-color;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
+  font-family: "Myriad Pro Bold";
+}
+.intl-tel-input .selected-flag {
+  padding-left: 25px;
+  padding-right: 25px;
+  //box-shadow: 1px 0px 2px rgba(0, 0, 0, 0.3);
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-input-placeholder { /* Edge */
+  font-family: "Myriad Pro Bold";
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  font-family: "Myriad Pro Bold";
+}
+
+::placeholder {
+  font-family: "Myriad Pro Light";
+}
+
+
+.primaryBtn {
+  position: absolute;
+  padding: 9px 23px;
+  font-size: 18px;
+  right: 10px;
+  font-family: "Myriad Pro Bold";
+  top: 50%;
+  border-radius: 7px;
+  overflow: hidden;
+  background: $button-primary-color;
+  background-image: url("../img/hero_section/button_bg.png");
+  transform: translateY(-50%);
+  //border: 1px solid $button-primary-color;
+  color: black;
+  z-index: 1;
+  transition: 300ms;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    color: black;
+    transform: translate(3px, -50%);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.signup.signUpBtn {
+  text-decoration: none !important;
+}
