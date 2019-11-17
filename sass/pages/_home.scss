@@ -129,9 +129,16 @@ $yellowTr: rgba(255, 255, 0, 0.53);
 body {
   overflow-x: hidden;
   user-select: none;
-  background-image: url(../images/chess.jpg);
+  background: black;
+  height: 2000px;
 }
 
 a {
   text-decoration: none;
+}
+
+.wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
 }

@@ -1,0 +1,115 @@
+$navigation--height: 205px;
+$nav__items--height: 74px;
+$tran__time: .4s;
+
+.navigation {
+  position: fixed;
+  height: $navigation--height;
+  margin-top: 30px;
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  align-items: flex-end;
+  transition: $tran__time;
+
+  &.collapse {
+    height: $nav__items--height;
+
+    > .ewl__logo {
+      left: 30px;
+      transform: translateX(0%);
+
+      > img {
+        transition: $tran__time;
+        height: $nav__items--height;
+      }
+    }
+
+    > .nav__items {
+
+      > ul {
+
+        > .ims__logo {
+          transform: translateX(-200px);
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  > .ewl__logo {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: $tran__time;
+
+    > img {
+      height: 95px;
+      transition: $tran__time;
+    }
+  }
+
+  > .nav__items {
+    height: $nav__items--height;
+    width: 100%;
+
+
+
+    > ul {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      border-bottom: 0.5px solid rgba(139, 139, 139, 0.84);
+      display: flex;
+      list-style: none;
+      justify-content: space-between;
+
+      > li {
+        padding: 0 30px;
+        position: relative;
+
+        &.ims__logo {
+          transform: translateX(0);
+          transition: $tran__time;
+          > img {
+            height: $nav__items--height;
+          }
+        }
+
+        &.active {
+          > a {
+            color: #412BFE;
+            font-weight: 700;
+          }
+        }
+
+
+        &.moving__line {
+          position: absolute;
+          line-height: 74px;
+          top: 100%;
+          height: 4px;
+          left: 0;
+          background: #412BFE;
+          transition: .3s cubic-bezier(.23,.36,.08,1.33);
+        }
+
+        > a {
+          font-family: 'Open Sans', sans-serif;
+          font-size: 24px;
+          line-height: 74px;
+          font-weight: normal;
+          color: #fff;
+          transition: $tran__time;
+          display: block;
+          text-align: center;
+
+          &:hover {
+            color: #412BFE;
+          }
+        }
+      }
+    }
+  }
+}
