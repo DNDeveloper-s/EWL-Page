@@ -1,5 +1,8 @@
 $navigation--height: 205px;
+$navigation--height__mob: 78px;
 $nav__items--height: 74px;
+$nav__items--height__mob: 44px;
+$nav__items--dropdown__height: 297px;
 $tran__time: .4s;
 
 .navigation {
@@ -12,26 +15,54 @@ $tran__time: .4s;
   align-items: flex-end;
   transition: $tran__time;
 
-  &.collapse {
-    height: $nav__items--height;
+  > svg {
+    display: none;
+  }
 
-    > .ewl__logo {
-      left: 30px;
-      transform: translateX(0%);
+  @media (max-width: 768px) {
+    margin-top: 0;
+    height: $navigation--height__mob;
+    border-bottom: 0.5px solid rgba(139, 139, 139, 0.84);
 
-      > img {
-        transition: $tran__time;
-        height: $nav__items--height;
-      }
+    > svg {
+      display: block;
+      fill: #8577FF;
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      top: 50%;
+      left: 5%;
+      transform: translateY(-50%);
     }
 
-    > .nav__items {
+  }
 
-      > ul {
+  @media (min-width: 769px) and (max-width: 1454px) {
+    height: $navigation--height - 40px;
+  }
 
-        > .ims__logo {
-          transform: translateX(-200px);
-          opacity: 0;
+  &.collapse {
+    @media (min-width: 769px) {
+      height: $nav__items--height;
+
+      > .ewl__logo {
+        left: 30px;
+        transform: translateX(0%);
+
+        > img {
+          transition: $tran__time;
+          height: $nav__items--height;
+        }
+      }
+
+      > .nav__items {
+
+        > ul {
+
+          > .ims__logo {
+            transform: translateX(-200px);
+            opacity: 0;
+          }
         }
       }
     }
@@ -39,14 +70,33 @@ $tran__time: .4s;
 
   > .ewl__logo {
     position: absolute;
-    top: 5%;
-    left: 50%;
-    transform: translateX(-50%);
     transition: $tran__time;
+
+    @media (min-width: 769px) {
+      top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
 
     > img {
       height: 95px;
       transition: $tran__time;
+
+      @media (max-width: 768px) {
+        height: $nav__items--height__mob;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      position: absolute;
+      top: 60%;
+      right: 5%;
+      display: inline-block;
+      transform: translateY(-50%);
+    }
+
+    @media (min-width: 769px) and (max-width: 1454px) {
+      zoom: 0.8;
     }
   }
 
@@ -54,6 +104,25 @@ $tran__time: .4s;
     height: $nav__items--height;
     width: 100%;
 
+    @media (max-width: 768px) {
+      position: absolute;
+      top: 100%;
+      height: $nav__items--dropdown__height;
+    }
+
+    @media (min-width: 769px) and (max-width: 1454px) {
+      zoom: 0.8;
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    &.mobDropDown{
+      > ul {
+        @media (max-width: 768px) {
+          height: $nav__items--dropdown__height;
+        }
+      }
+    }
 
 
     > ul {
@@ -64,16 +133,33 @@ $tran__time: .4s;
       display: flex;
       list-style: none;
       justify-content: space-between;
+      transition: $tran__time;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+        height: 0;
+        overflow: hidden;
+      }
 
       > li {
-        padding: 0 30px;
         position: relative;
+
+        @media (max-width: 768px) {
+          width: 100%;
+          border-bottom: 0.5px solid rgba(139, 139, 139, 0.84);
+        }
 
         &.ims__logo {
           transform: translateX(0);
           transition: $tran__time;
           > img {
             height: $nav__items--height;
+          }
+
+          @media (max-width: 768px) {
+            &.ims__logo {
+              display: none;
+            }
           }
         }
 
@@ -93,9 +179,14 @@ $tran__time: .4s;
           left: 0;
           background: #412BFE;
           transition: .3s cubic-bezier(.23,.36,.08,1.33);
+
+          @media (max-width: 768px) {
+            display: none;
+          }
         }
 
         > a {
+          padding: 0 30px;
           font-family: 'Open Sans', sans-serif;
           font-size: 24px;
           line-height: 74px;
@@ -104,6 +195,14 @@ $tran__time: .4s;
           transition: $tran__time;
           display: block;
           text-align: center;
+
+          @media (max-width: 768px) {
+            text-align: left;
+          }
+          
+          @media (min-width: 400px) and (max-width: 768px){
+            padding-left: 120px;
+          }
 
           &:hover {
             color: #412BFE;

@@ -2,7 +2,8 @@ let moving__line = document.querySelector('.moving__line');
 let wrapper = document.querySelector('.wrapper');
 let listItems = document.querySelectorAll('.list__items');
 let navigation = document.querySelector('.navigation');
-
+let menu__icon = document.querySelector('.menu__icon');
+let nav__itemsContainer = document.querySelector('.nav__items');
 
 function removeClassFromSiblings(classes, element) {
     element.forEach(cur => {
@@ -30,14 +31,16 @@ listItems.forEach(cur => {
     });
 });
 
-window.addEventListener('resize', () => {
-   updateMovingLine();
-});
+window.addEventListener('resize', updateMovingLine);
 
 window.addEventListener('scroll', () => {
-    if(window.pageYOffset >= 148) {
+    if(window.pageYOffset > 148) {
         navigation.classList.add('collapse');
     } else {
         navigation.classList.remove('collapse');
     }
+});
+
+menu__icon.addEventListener('click', () => {
+    nav__itemsContainer.classList.toggle('mobDropDown');
 });
